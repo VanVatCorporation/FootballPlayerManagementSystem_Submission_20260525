@@ -1,0 +1,1 @@
+# matchId|date(dd/MM/yyyy)|opponentTeam|matchType

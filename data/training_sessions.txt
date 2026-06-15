@@ -1,0 +1,1 @@
+# trainingId|date(dd/MM/yyyy)|location|topic

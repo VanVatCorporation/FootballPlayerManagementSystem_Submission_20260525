@@ -1,0 +1,2 @@
+# type|playerId|fullName|age|nationality|position|shirtNumber|baseSalary|status
+Star Player|1|R|33|VN|Goalkeeper|36|10|Active

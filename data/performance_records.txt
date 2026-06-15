@@ -1,0 +1,1 @@
+# matchId|playerId|goals|assists|yellowCards|redCards|minutesPlayed
