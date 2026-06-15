@@ -486,7 +486,6 @@ public class ConsoleApp {
     }
 
     private void showPlayerPerformance() {
-        System.out.println();
         System.out.println("----------- PLAYER PERFORMANCE LIST -----------");
         List<PerformanceRecord> records = matchManager.getAllPerformanceRecords();
         System.out.printf("%-8s %-12s %-20s %5s %7s %6s %4s %7s %7s%n",
