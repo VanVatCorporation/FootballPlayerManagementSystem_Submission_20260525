@@ -135,7 +135,7 @@ public class ConsoleApp {
             System.out.println("1. Create Training Session");
             System.out.println("2. Record Training Attendance");
             System.out.println("3. Create Match Record");
-            System.out.println("4. Add / Update Player Performance");
+            System.out.println("4. Player Performance");
             System.out.println("5. View Training History");
             System.out.println("6. View Match History");
             System.out.println("7. Back");
@@ -151,7 +151,7 @@ public class ConsoleApp {
                     createMatchRecord();
                     break;
                 case 4:
-                    addOrUpdatePlayerPerformance();
+                    playerPerformanceMenu();
                     break;
                 case 5:
                     viewTrainingHistory();
@@ -419,6 +419,31 @@ public class ConsoleApp {
         }
     }
 
+    private void playerPerformanceMenu() {
+        boolean back = false;
+        while (!back) {
+            System.out.println();
+            System.out.println("----------- PLAYER PERFORMANCE -----------");
+            System.out.println("1. Add / Update");
+            System.out.println("2. Show");
+            System.out.println("3. Back");
+            int choice = readMenuOption("Choose an option: ", 1, 3);
+            switch (choice) {
+                case 1:
+                    addOrUpdatePlayerPerformance();
+                    break;
+                case 2:
+                    showPlayerPerformance();
+                    break;
+                case 3:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
+        }
+    }
+
     private void addOrUpdatePlayerPerformance() {
         System.out.println();
         System.out.println("----------- PLAYER PERFORMANCE MANAGEMENT -----------");
@@ -458,6 +483,35 @@ public class ConsoleApp {
         } catch (IllegalArgumentException ex) {
             printFail(ex.getMessage());
         }
+    }
+
+    private void showPlayerPerformance() {
+        System.out.println("----------- PLAYER PERFORMANCE LIST -----------");
+        List<PerformanceRecord> records = matchManager.getAllPerformanceRecords();
+        System.out.printf("%-8s %-12s %-20s %5s %7s %6s %4s %7s %7s%n",
+                "Match", "Player ID", "Player Name", "Goals", "Assists", "Yellow", "Red", "Minutes", "Points");
+        System.out.println("--------------------------------------------------------------------------------------------");
+        if (records.isEmpty()) {
+            System.out.println("No player performance records found.");
+        } else {
+            for (PerformanceRecord record : records) {
+                String playerName = playerManager.findPlayer(record.getPlayerId())
+                        .map(Player::getFullName)
+                        .orElse("Unknown");
+                System.out.printf("%-8s %-12s %-20s %5d %7d %6d %4d %7d %7d%n",
+                        record.getMatchId(),
+                        record.getPlayerId(),
+                        trimToWidth(playerName, 20),
+                        record.getGoals(),
+                        record.getAssists(),
+                        record.getYellowCards(),
+                        record.getRedCards(),
+                        record.getMinutesPlayed(),
+                        record.calculatePerformancePoints());
+            }
+        }
+        System.out.println("--------------------------------------------------------------------------------------------");
+        pause();
     }
 
     private void viewTrainingHistory() {
