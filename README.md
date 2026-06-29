@@ -1,38 +1,41 @@
-# Football Player Management System
+# ⚽ Football Player Management System
 
-Java console application for the PRO192-style football player management project.
+A vibrant Java console app for managing football players, training sessions, matches, and salary reports — built for PRO192-style projects.
 
-## Features
+## ✨ Highlights
 
-- Manage players: add, update, deactivate, view, search, view details.
-- Manage training and matches: create sessions, record attendance with snapshot overwrite rules, create matches, add or replace player performance.
-- Salary management: player type display, monthly performance points, bonus, salary summary.
-- Reports: salary summary by month/year and all-time top goal scorers.
-- File I/O only. No database, GUI, web app, or external framework.
+- ✅ Add, update, deactivate, view, and search players
+- 🏋️ Manage training sessions and attendance with smart overwrite logic
+- ⚽ Create match records and track player performance
+- 💰 Generate salary summaries: monthly points, bonuses, and pay totals
+- 📊 Run reports for salary history and all-time top scorers
+- 🗄️ File-based storage only — no database, GUI, or external frameworks
 
-## Build
+## 🚀 Build
 
-Run from this project folder:
+From the project root:
 
 ```bash
 javac -d out $(find src -name "*.java")
 ```
 
-## Run
+## ▶️ Run
 
 ```bash
 java -cp out football.Main
 ```
 
-By default, data is loaded from and saved to the `data` folder. You can pass another data folder if needed:
+## 📁 Optional data path
+
+Default data folder:
 
 ```bash
 java -cp out football.Main /path/to/data
 ```
 
-## Data Files
+## 📝 Data files
 
-The saved files are readable text files:
+Saved files are plain text and easy to inspect:
 
 - `data/players.txt`
 - `data/training_sessions.txt`
@@ -40,4 +43,4 @@ The saved files are readable text files:
 - `data/match_records.txt`
 - `data/performance_records.txt`
 
-Data is written to files when choosing `Save and Exit` from the Exit menu.
+Data is saved when you choose `Save and Exit` from the menu.
